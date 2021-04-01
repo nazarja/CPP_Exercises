@@ -1,25 +1,37 @@
-#include "car.h"
 #include <iostream>
-#include <string>
-#include <vector>
 
 using namespace std;
 
+class Date 
+{
+    private:
+        int day{1};
+        int month{1};
+        int year{1984};
+    
+    public:
+        int GetDay() { return day;};
+        int GetMonth() { return month;};
+        int GetYear() { return year;};
+        
+        void SetDay(int d) {
+            if (d >= 0) day = d;
+        }
+        void SetMonth(int m) {
+            if (m >= 1 || m <= 12) month = m;
+        }
+};
+
 int main()
 {
-    vector<string> colors{"red", "blue", "green"};
-    vector<Car*> cars;
-    Car* car = nullptr;
+	Date date;
 
-    for (int i = 0; i < 100; i++)
-    {
-        car = new Car(colors[i%3], i+1);
-        cars.push_back(car);
-    }
+	// date.day = 19;
+	// date.month = 4;
+	// date.year = 1984;
 
-    for (Car* car : cars)
-    {
-        car->IncrementDistance();
-        car->PrintCarData();
-    }
+    date.SetDay(13);
+    date.SetDay(-7);
+
+	cout << date.GetDay() << "/" << date.GetMonth() << "/" << date.GetYear() << endl;	
 }
